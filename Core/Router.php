@@ -53,10 +53,16 @@ final class Router
         return call_user_func($callback, $this->request);
     }
 
-    public function renderView($view, $data = []): string
+    public function renderView($view, array $data = []): string
     {
-        $layoutContent = $this->layoutContent("main");
         $viewContent = $this->viewContent($view, $data);
+        $layoutName = $this->getLayoutNameFromViewContent($viewContent);
+
+        if (!$layoutName) {
+            return $viewContent;
+        }
+
+        $layoutContent = $this->layoutContent($layoutName);
         return str_replace("{{ content }}", $viewContent, $layoutContent);
     }
 
@@ -67,7 +73,7 @@ final class Router
         return ob_get_clean();
     }
 
-    protected function viewContent(string $view, $data): string
+    protected function viewContent(string $view, array $data): string
     {
 
         foreach ($data as $key => $value) {
@@ -77,5 +83,18 @@ final class Router
         ob_start();
         include_once Application::$ROOT_DIR . "/Views/{$view}.view.php";
         return ob_get_clean();
+    }
+
+    protected function getLayoutNameFromViewContent(string &$content): string|null {
+        $regex = "/^@layout\('(?P<layout>.+)'\)/";
+        preg_match($regex, $content, $matches);
+
+        if (!array_key_exists("layout", $matches)) {
+            return null;
+        }
+
+        $content = preg_replace($regex, "", $content); // TODO: Normal replacement for @pattern
+
+        return $matches["layout"];
     }
 }

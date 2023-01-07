@@ -36,9 +36,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Main layout</h1>
-    <div class="container">
-        {{ content }}
-    </div>
+<h1>Auth layout</h1>
+<div class="container">
+    {{ content }}
+</div>
 </body>
 </html>
