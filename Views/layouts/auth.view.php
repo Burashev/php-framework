@@ -32,12 +32,17 @@
             background-color: #0c20be;
             color: white;
         }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
     </style>
     <title>Document</title>
 </head>
 <body>
 <h1>Auth layout</h1>
-<div class="container">
+<div class="container" style="display: flex; align-items: center; justify-content: center;">
     {{ content }}
 </div>
 </body>
