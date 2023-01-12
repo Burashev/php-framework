@@ -7,7 +7,18 @@ use App\Controllers\AppController;
 use App\Controllers\AuthController;
 use App\Core\Application;
 
-$app = new Application(dirname(__DIR__));
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+$config = [
+    "db" => [
+        "dsn" => "mysql:host={$_ENV["DB_SERVER"]};port={$_ENV["DB_PORT"]};dbname={$_ENV["DB_NAME"]}",
+        "username" => $_ENV["DB_USER"],
+        "password" => $_ENV["DB_PASSWORD"],
+    ]
+];
+
+$app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', [AppController::class, 'index']);
 $app->router->get('/test', [AppController::class, 'testViewFunction']);

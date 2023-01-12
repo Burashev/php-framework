@@ -9,7 +9,7 @@ final class Request
 
     public function __construct()
     {
-        $this->parsedUrl = parse_url($_SERVER['REQUEST_URI']);
+        $this->parsedUrl = parse_url($_SERVER['REQUEST_URI'] ?? '/');
     }
 
     public function getPath(): string
