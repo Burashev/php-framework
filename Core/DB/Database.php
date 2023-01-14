@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
+namespace App\Core\DB;
 
+use App\Core\Application;
 use PDO;
 
 final class Database

@@ -53,13 +53,13 @@ final class Validator
     private function sameValidate(string $value, array $params): bool
     {
         $field = $params["same"];
-        $fieldValue = $this->model->{$field};
+        $fieldValue = $this->data[$field];
         return $value === $fieldValue;
     }
 
     public array $errors = [];
 
-    public function __construct(private readonly Model $model)
+    public function __construct(private readonly array $data)
     {
 
     }
@@ -78,7 +78,7 @@ final class Validator
     public function validate(array $rules): array
     {
         foreach ($rules as $property => $propertyRules) {
-            $value = $this->model->{$property};
+            $value = $this->data[$property];
 
             foreach ($propertyRules as $rule) {
                 $ruleName = $rule;

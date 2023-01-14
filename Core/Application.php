@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use App\Core\DB\Database;
+
 final class Application
 {
     public Router $router;

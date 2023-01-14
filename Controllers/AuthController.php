@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Core\Application;
 use App\Core\Controller;
 use App\Core\Request;
+use App\Core\Response;
 use App\Core\Validator;
-use App\Models\RegisterModel;
+use App\Models\User;
 
 final class AuthController extends Controller
 {
@@ -28,10 +30,7 @@ final class AuthController extends Controller
     public function handleRegister(Request $request)
     {
         $data = $request->input();
-        $registerModel = new RegisterModel();
-        $registerModel->loadData($data);
-
-        $validator = new Validator($registerModel);
+        $validator = new Validator($data);
 
         $errors = $validator->validate([
             'name' => [Validator::RULE_REQUIRED],
@@ -41,8 +40,14 @@ final class AuthController extends Controller
             'passwordConfirm' => [Validator::RULE_REQUIRED],
         ]);
 
-        dd($errors);
+        if ($validator->validated()) {
+            $user = User::query()->create(
+                ['password' => password_hash($data['password'], PASSWORD_BCRYPT)] + $data
+            );
 
-        return "handle";
+            Application::$app->response->redirect('/');
+        }
+
+        return "error";
     }
 }
