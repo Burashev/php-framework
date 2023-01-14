@@ -10,6 +10,16 @@ abstract class Model
 
     abstract public function getTable(): string;
 
+    public function __get(string $name)
+    {
+        return $this->attributes[$name];
+    }
+
+    public function __set(string $name, $value): void
+    {
+        $this->attributes[$name] = $value;
+    }
+
     public function loadAttributes(array $data): Model
     {
         foreach ($data as $attribute => $value) {
