@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d3bfaddb186bef89d6fc565a0c97ce9",
+    "content-hash": "f34a8e09e72a3945b26f5efbb4ac98ed",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -142,6 +142,42 @@
                 }
             ],
             "time": "2022-07-30T15:51:26+00:00"
+        },
+        {
+            "name": "shburashev/php-framework-core",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Burashev/php-framework-core.git",
+                "reference": "15c95b0046051147ed27139e40e09b530a16bba9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Burashev/php-framework-core/zipball/15c95b0046051147ed27139e40e09b530a16bba9",
+                "reference": "15c95b0046051147ed27139e40e09b530a16bba9",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Den/Helpers/functions.php"
+                ],
+                "psr-4": {
+                    "Den\\": "src/Den"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Burashev Shamil",
+                    "email": "shburashev@ya.ru"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/Burashev/php-framework-core/issues",
+                "source": "https://github.com/Burashev/php-framework-core/tree/v0.1.1"
+            },
+            "time": "2023-01-17T09:28:01+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

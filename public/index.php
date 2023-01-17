@@ -5,7 +5,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 use App\Controllers\AppController;
 use App\Controllers\AuthController;
-use App\Core\Application;
+use Den\Application;
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();

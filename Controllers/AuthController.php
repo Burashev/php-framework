@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Core\Application;
-use App\Core\Controller;
-use App\Core\Request;
-use App\Core\Response;
-use App\Core\Validator;
+use Den\Application;
+use Den\Controller;
+use Den\Request;
+use Den\Response;
+use Den\Validator;
 use App\Models\User;
 
 final class AuthController extends Controller

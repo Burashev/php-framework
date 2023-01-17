@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use App\Core\Application;
+use Den\Application;
 
 return new class {
     function up() {
