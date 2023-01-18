@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . "/../vendor/autoload.php";
-
-use App\Controllers\AppController;
-use App\Controllers\AuthController;
 use Den\Application;
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$rootDir = dirname(__DIR__);
+
+require $rootDir . "/vendor/autoload.php";
+
+$dotenv = Dotenv\Dotenv::createImmutable($rootDir);
 $dotenv->load();
 
 $config = [
@@ -18,17 +18,9 @@ $config = [
     ]
 ];
 
-$app = new Application(dirname(__DIR__), $config);
+$app = new Application($rootDir, $config);
 
-$app->router->get('/', [AppController::class, 'index']);
-$app->router->get('/test', [AppController::class, 'testViewFunction']);
-$app->router->post('/form', [AppController::class, 'handleForm']);
-$app->router->get('/form', [AppController::class, 'form']);
-
-$app->router->get('/login', [AuthController::class, 'login']);
-$app->router->post('/login', [AuthController::class, 'handleLogin']);
-
-$app->router->get('/register', [AuthController::class, 'register']);
-$app->router->post('/register', [AuthController::class, 'handleRegister']);
+// Routes
+require_once $rootDir . "/routes/web.php";
 
 $app->run();

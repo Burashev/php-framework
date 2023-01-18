@@ -1,3 +1,3 @@
 @layout('main')
 
-<p>Some content</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, quibusdam?</p>

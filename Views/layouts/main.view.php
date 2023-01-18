@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "JetBrains Mono", sans-serif;
+            font-family: Arial, sans-serif;
         }
         .container {
             max-width: 1300px;
@@ -18,25 +18,10 @@
             margin: 0 auto;
             padding: 0 15px;
         }
-        input {
-            padding: 10px 15px;
-            border: 1px solid #ccc;
-            border-radius: 15px;
-            font-size: 16px;
-        }
-        button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 15px;
-            font-size: 16px;
-            background-color: #0c20be;
-            color: white;
-        }
     </style>
     <title>Document</title>
 </head>
 <body>
-    <h1>Main layout</h1>
     <div class="container">
         {{ content }}
     </div>
